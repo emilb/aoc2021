@@ -23,4 +23,4 @@ echo "Fetching problem input..."
 nog -d "${shortDay}" -y 2021 -i > input.txt
 
 echo "Fetching problem puzzle..."
-nog -d "${shortDay}" -y 2021 -p | sed '1,22d' > puzzle.ansi
+nog -d "${shortDay}" -y 2021 -p | sed '1,20d' > puzzle.ansi

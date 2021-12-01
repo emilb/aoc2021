@@ -1,0 +1,77 @@
+[1;31m--- Day 1: Sonar Sweep ---
+[0mYou're minding your own business on a ship at sea when the overboard alarm
+goes off! You rush to see if you can help. Apparently, one of the Elves
+tripped and accidentally sent the sleigh keys flying into the ocean!
+
+[0mBefore
+you know it, you're inside a submarine the Elves keep ready for situations
+like this. It's covered in Christmas lights (because of course it is),
+and it even has an experimental antenna that should be able to track the
+keys if you can boost its signal strength high enough; there's a little
+meter that indicates the antenna's signal strength by displaying 0-50 [1;33mstars[0m.
+
+[0mYour
+instincts tell you that in order to save Christmas, you'll need to get
+all [1;33mfifty stars[0m by December 25th.
+
+[0mCollect stars by solving puzzles.  Two
+puzzles will be made available on each day in the Advent calendar; the
+second puzzle is unlocked when you complete the first.  Each puzzle grants
+[1;33mone star[0m. Good luck!
+
+[0mAs the submarine drops below the surface of the ocean,
+it automatically performs a sonar sweep of the nearby sea floor. On a small
+screen, the sonar sweep report (your puzzle input) appears: each line is
+a measurement of the sea floor depth as the sweep looks further and further
+away from the submarine.
+
+[0mFor example, suppose you had the following report:
+
+[0m[0m199
+200
+208
+210
+200
+207
+240
+269
+260
+263
+[0m[0m
+[0mThis
+report indicates that, scanning outward from the submarine, the sonar sweep
+found depths of [0m199[0m, [0m200[0m, [0m208[0m, [0m210[0m, and so on.
+
+[0mThe first order of business
+is to figure out how quickly the depth increases, just so you know what
+you're dealing with - you never know if the keys will get [0mcarried into
+deeper water[0m by an ocean current or a fish or something.
+
+[0mTo do this, count
+[1;32mthe number of times a depth measurement increases[0m from the previous measurement.
+(There is no measurement before the first measurement.) In the example
+above, the changes are as follows:
+
+[0m[0m199 (N/A - no previous measurement)
+200
+([1;32mincreased[0m)
+208 ([1;32mincreased[0m)
+210 ([1;32mincreased[0m)
+200 (decreased)
+207 ([1;32mincreased[0m)
+240
+([1;32mincreased[0m)
+269 ([1;32mincreased[0m)
+260 (decreased)
+263 ([1;32mincreased[0m)
+[0m[0m
+[0mIn this example,
+there are [1;32m[0m7[0m[0m measurements that are larger than the previous measurement.
+
+[0m[1;32mHow
+many measurements are larger than the previous measurement?[0m
+
+[0m
+[0mTo begin,
+[0mget your puzzle input[0m.
+
