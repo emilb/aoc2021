@@ -1,0 +1,57 @@
+[1;31m--- Day 2: Dive! ---
+[0mNow, you need to figure out how to [0mpilot this thing[0m.
+
+[0mIt seems like the
+submarine can take a series of commands like [0mforward 1[0m, [0mdown 2[0m, or [0mup 3[0m:
+
+[0m
+[0m[0mforward
+X[0m increases the horizontal position by [0mX[0m units.[0m
+[0m[0mdown X[0m [1;32mincreases[0m the depth
+by [0mX[0m units.[0m
+[0m[0mup X[0m [1;32mdecreases[0m the depth by [0mX[0m units.[0m
+[0m
+[0mNote that since you're
+on a submarine, [0mdown[0m and [0mup[0m affect your [1;32mdepth[0m, and so they have the opposite
+result of what you might expect.
+
+[0mThe submarine seems to already have a
+planned course (your puzzle input). You should probably figure out where
+it's going. For example:
+
+[0m[0mforward 5
+down 5
+forward 8
+up 3
+down 8
+forward
+2
+[0m[0m
+[0mYour horizontal position and depth both start at [0m0[0m. The steps above
+would then modify them as follows:
+
+[0m
+[0m[0mforward 5[0m adds [0m5[0m to your horizontal
+position, a total of [0m5[0m.[0m
+[0m[0mdown 5[0m adds [0m5[0m to your depth, resulting in a value
+of [0m5[0m.[0m
+[0m[0mforward 8[0m adds [0m8[0m to your horizontal position, a total of [0m13[0m.[0m
+[0m[0mup 3[0m
+decreases your depth by [0m3[0m, resulting in a value of [0m2[0m.[0m
+[0m[0mdown 8[0m adds [0m8[0m to
+your depth, resulting in a value of [0m10[0m.[0m
+[0m[0mforward 2[0m adds [0m2[0m to your horizontal
+position, a total of [0m15[0m.[0m
+[0m
+[0mAfter following these instructions, you would
+have a horizontal position of [0m15[0m and a depth of [0m10[0m. (Multiplying these
+together produces [0m[1;32m150[0m[0m.)
+
+[0mCalculate the horizontal position and depth you
+would have after following the planned course. [1;32mWhat do you get if you multiply
+your final horizontal position by your final depth?[0m
+
+[0m
+[0mTo begin, [0mget your
+puzzle input[0m.
+
