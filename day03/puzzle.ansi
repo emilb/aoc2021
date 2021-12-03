@@ -1,0 +1,61 @@
+[1;31m--- Day 3: Binary Diagnostic ---
+[0mThe submarine has been making some [0modd creaking noises[0m, so you ask it to
+produce a diagnostic report just in case.
+
+[0mThe diagnostic report (your puzzle
+input) consists of a list of binary numbers which, when decoded properly,
+can tell you many useful things about the conditions of the submarine.
+The first parameter to check is the [1;32mpower consumption[0m.
+
+[0mYou need to use
+the binary numbers in the diagnostic report to generate two new binary
+numbers (called the [1;32mgamma rate[0m and the [1;32mepsilon rate[0m). The power consumption
+can then be found by multiplying the gamma rate by the epsilon rate.
+
+[0mEach
+bit in the gamma rate can be determined by finding the [1;32mmost common bit
+in the corresponding position[0m of all numbers in the diagnostic report.
+For example, given the following diagnostic report:
+
+[0m[0m00100
+11110
+10110
+10111
+10101
+01111
+00111
+11100
+10000
+11001
+00010
+01010
+[0m[0m
+[0mConsidering
+only the first bit of each number, there are five [0m0[0m bits and seven [0m1[0m bits.
+Since the most common bit is [0m1[0m, the first bit of the gamma rate is [0m1[0m.
+
+[0mThe
+most common second bit of the numbers in the diagnostic report is [0m0[0m, so
+the second bit of the gamma rate is [0m0[0m.
+
+[0mThe most common value of the third,
+fourth, and fifth bits are [0m1[0m, [0m1[0m, and [0m0[0m, respectively, and so the final
+three bits of the gamma rate are [0m110[0m.
+
+[0mSo, the gamma rate is the binary
+number [0m10110[0m, or [0m[1;32m22[0m[0m in decimal.
+
+[0mThe epsilon rate is calculated in a similar
+way; rather than use the most common bit, the least common bit from each
+position is used. So, the epsilon rate is [0m01001[0m, or [0m[1;32m9[0m[0m in decimal. Multiplying
+the gamma rate ([0m22[0m) by the epsilon rate ([0m9[0m) produces the power consumption,
+[0m[1;32m198[0m[0m.
+
+[0mUse the binary numbers in your diagnostic report to calculate the
+gamma rate and epsilon rate, then multiply them together. [1;32mWhat is the power
+consumption of the submarine?[0m (Be sure to represent your answer in decimal,
+not binary.)
+
+[0m
+[0mTo begin, [0mget your puzzle input[0m.
+
