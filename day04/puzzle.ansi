@@ -1,0 +1,100 @@
+[1;31m--- Day 4: Giant Squid ---
+[0mYou're already almost 1.5km (almost a mile) below the surface of the ocean,
+already so deep that you can't see any sunlight. What you [1;32mcan[0m see, however,
+is a giant squid that has attached itself to the outside of your submarine.
+
+[0mMaybe
+it wants to play [0mbingo[0m?
+
+[0mBingo is played on a set of boards each consisting
+of a 5x5 grid of numbers. Numbers are chosen at random, and the chosen
+number is [1;32mmarked[0m on all boards on which it appears. (Numbers may not appear
+on all boards.) If all numbers in any row or any column of a board are
+marked, that board [1;32mwins[0m. (Diagonals don't count.)
+
+[0mThe submarine has a [1;32mbingo
+subsystem[0m to help passengers (currently, you and the giant squid) pass
+the time. It automatically generates a random order in which to draw numbers
+and a random set of boards (your puzzle input). For example:
+
+[0m[0m7,4,9,5,11,17,23,2,0,14,21,24,10,16,13,6,15,25,12,22,18,20,8,19,3,26,1
+
+22
+13 17 11  0
+ 8  2 23  4 24
+21  9 14 16  7
+ 6 10  3 18  5
+ 1 12 20 15 19
+
+
+3 15  0  2 22
+ 9 18 13 17  5
+19  8  7 25 23
+20 11 10 24  4
+14 21 16 12
+ 6
+
+14 21 17 24  4
+10 16 15  9 19
+18  8 23 26 20
+22 11 13  6  5
+ 2  0 12
+ 3  7
+[0m[0m
+[0mAfter the first five numbers are drawn ([0m7[0m, [0m4[0m, [0m9[0m, [0m5[0m, and [0m11[0m), there
+are no winners, but the boards are marked as follows (shown here adjacent
+to each other to save space):
+
+[0m[0m22 13 17 [1;32m11[0m  0         3 15  0  2 22    
+   14 21 17 24  [1;32m4[0m
+ 8  2 23  [1;32m4[0m 24         [1;32m9[0m 18 13 17  [1;32m5[0m        10 16 15
+ [1;32m9[0m 19
+21  [1;32m9[0m 14 16  [1;32m7[0m        19  8  [1;32m7[0m 25 23        18  8 23 26 20
+ 6 10
+ 3 18  [1;32m5[0m        20 [1;32m11[0m 10 24  [1;32m4[0m        22 [1;32m11[0m 13  6  [1;32m5[0m
+ 1 12 20 15 19   
+    14 21 16 12  6         2  0 12  3  [1;32m7[0m
+[0m[0m
+[0mAfter the next six numbers are
+drawn ([0m17[0m, [0m23[0m, [0m2[0m, [0m0[0m, [0m14[0m, and [0m21[0m), there are still no winners:
+
+[0m[0m22 13 [1;32m17[0m
+[1;32m11[0m  [1;32m0[0m         3 15  [1;32m0[0m  [1;32m2[0m 22        [1;32m14[0m [1;32m21[0m [1;32m17[0m 24  [1;32m4[0m
+ 8  [1;32m2[0m [1;32m23[0m  [1;32m4[0m 24      
+  [1;32m9[0m 18 13 [1;32m17[0m  [1;32m5[0m        10 16 15  [1;32m9[0m 19
+[1;32m21[0m  [1;32m9[0m [1;32m14[0m 16  [1;32m7[0m        19  8  [1;32m7[0m 25
+[1;32m23[0m        18  8 [1;32m23[0m 26 20
+ 6 10  3 18  [1;32m5[0m        20 [1;32m11[0m 10 24  [1;32m4[0m        22
+[1;32m11[0m 13  6  [1;32m5[0m
+ 1 12 20 15 19        [1;32m14[0m [1;32m21[0m 16 12  6         [1;32m2[0m  [1;32m0[0m 12  3  [1;32m7[0m
+[0m[0m
+[0mFinally,
+[0m24[0m is drawn:
+
+[0m[0m22 13 [1;32m17[0m [1;32m11[0m  [1;32m0[0m         3 15  [1;32m0[0m  [1;32m2[0m 22        [1;32m14[0m [1;32m21[0m [1;32m17[0m [1;32m24[0m  [1;32m4[0m
+
+8  [1;32m2[0m [1;32m23[0m  [1;32m4[0m [1;32m24[0m         [1;32m9[0m 18 13 [1;32m17[0m  [1;32m5[0m        10 16 15  [1;32m9[0m 19
+[1;32m21[0m  [1;32m9[0m [1;32m14[0m 16 
+[1;32m7[0m        19  8  [1;32m7[0m 25 [1;32m23[0m        18  8 [1;32m23[0m 26 20
+ 6 10  3 18  [1;32m5[0m        20
+[1;32m11[0m 10 [1;32m24[0m  [1;32m4[0m        22 [1;32m11[0m 13  6  [1;32m5[0m
+ 1 12 20 15 19        [1;32m14[0m [1;32m21[0m 16 12  6
+        [1;32m2[0m  [1;32m0[0m 12  3  [1;32m7[0m
+[0m[0m
+[0mAt this point, the third board [1;32mwins[0m because it has
+at least one complete row or column of marked numbers (in this case, the
+entire top row is marked: [0m[1;32m14 21 17 24  4[0m[0m).
+
+[0mThe [1;32mscore[0m of the winning board
+can now be calculated. Start by finding the [1;32msum of all unmarked numbers[0m
+on that board; in this case, the sum is [0m188[0m. Then, multiply that sum by
+[1;32mthe number that was just called[0m when the board won, [0m24[0m, to get the final
+score, [0m188 * 24 = [1;32m4512[0m[0m.
+
+[0mTo guarantee victory against the giant squid, figure
+out which board will win first. [1;32mWhat will your final score be if you choose
+that board?[0m
+
+[0m
+[0mTo begin, [0mget your puzzle input[0m.
+
