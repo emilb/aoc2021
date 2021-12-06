@@ -1,0 +1,98 @@
+[1;31m--- Day 6: Lanternfish ---
+[0mThe sea floor is getting steeper. Maybe the sleigh keys got carried this
+way?
+
+[0mA massive school of glowing [0mlanternfish[0m swims past. They must spawn
+quickly to reach such large numbers - maybe [1;32mexponentially[0m quickly? You
+should model their growth rate to be sure.
+
+[0mAlthough you know nothing about
+this specific species of lanternfish, you make some guesses about their
+attributes. Surely, [0meach lanternfish creates a new lanternfish[0m once every
+[1;32m7[0m days.
+
+[0mHowever, this process isn't necessarily synchronized between every
+lanternfish - one lanternfish might have 2 days left until it creates another
+lanternfish, while another might have 4. So, you can model each fish as
+a single number that represents [1;32mthe number of days until it creates a new
+lanternfish[0m.
+
+[0mFurthermore, you reason, a [1;32mnew[0m lanternfish would surely need
+slightly longer before it's capable of producing more lanternfish: two
+more days for its first cycle.
+
+[0mSo, suppose you have a lanternfish with
+an internal timer value of [0m3[0m:
+
+[0m
+[0mAfter one day, its internal timer would
+become [0m2[0m.[0m
+[0mAfter another day, its internal timer would become [0m1[0m.[0m
+[0mAfter another
+day, its internal timer would become [0m0[0m.[0m
+[0mAfter another day, its internal
+timer would reset to [0m6[0m, and it would create a [1;32mnew[0m lanternfish with an internal
+timer of [0m8[0m.[0m
+[0mAfter another day, the first lanternfish would have an internal
+timer of [0m5[0m, and the second lanternfish would have an internal timer of
+[0m7[0m.[0m
+[0m
+[0mA lanternfish that creates a new fish resets its timer to [0m6[0m, [1;32mnot [0m7[0m[0m
+(because [0m0[0m is included as a valid timer value). The new lanternfish starts
+with an internal timer of [0m8[0m and does not start counting down until the
+next day.
+
+[0mRealizing what you're trying to do, the submarine automatically
+produces a list of the ages of several hundred nearby lanternfish (your
+puzzle input). For example, suppose you were given the following list:
+
+[0m[0m3,4,3,1,2[0m[0m
+[0mThis
+list means that the first fish has an internal timer of [0m3[0m, the second fish
+has an internal timer of [0m4[0m, and so on until the fifth fish, which has an
+internal timer of [0m2[0m. Simulating these fish over several days would proceed
+as follows:
+
+[0m[0mInitial state: 3,4,3,1,2
+After  1 day:  2,3,2,0,1
+After  2
+days: 1,2,1,6,0,8
+After  3 days: 0,1,0,5,6,7,8
+After  4 days: 6,0,6,4,5,6,7,8,8
+After
+ 5 days: 5,6,5,3,4,5,6,7,7,8
+After  6 days: 4,5,4,2,3,4,5,6,6,7
+After 
+7 days: 3,4,3,1,2,3,4,5,5,6
+After  8 days: 2,3,2,0,1,2,3,4,4,5
+After  9
+days: 1,2,1,6,0,1,2,3,3,4,8
+After 10 days: 0,1,0,5,6,0,1,2,2,3,7,8
+After
+11 days: 6,0,6,4,5,6,0,1,1,2,6,7,8,8,8
+After 12 days: 5,6,5,3,4,5,6,0,0,1,5,6,7,7,7,8,8
+After
+13 days: 4,5,4,2,3,4,5,6,6,0,4,5,6,6,6,7,7,8,8
+After 14 days: 3,4,3,1,2,3,4,5,5,6,3,4,5,5,5,6,6,7,7,8
+After
+15 days: 2,3,2,0,1,2,3,4,4,5,2,3,4,4,4,5,5,6,6,7
+After 16 days: 1,2,1,6,0,1,2,3,3,4,1,2,3,3,3,4,4,5,5,6,8
+After
+17 days: 0,1,0,5,6,0,1,2,2,3,0,1,2,2,2,3,3,4,4,5,7,8
+After 18 days: 6,0,6,4,5,6,0,1,1,2,6,0,1,1,1,2,2,3,3,4,6,7,8,8,8,8
+[0m[0m
+[0mEach
+day, a [0m0[0m becomes a [0m6[0m and adds a new [0m8[0m to the end of the list, while each
+other number decreases by 1 if it was present at the start of the day.
+
+[0mIn
+this example, after 18 days, there are a total of [0m26[0m fish. After 80 days,
+there would be a total of [0m[1;32m5934[0m[0m.
+
+[0mFind a way to simulate lanternfish. [1;32mHow
+many lanternfish would there be after 80 days?[0m
+
+[0m
+[0mTo begin, [0mget your puzzle
+input[0m.
+
