@@ -1,0 +1,63 @@
+[1;31m--- Day 7: The Treachery of Whales ---
+[0mA giant [0mwhale[0m has decided your submarine is its next meal, and it's much
+faster than you are. There's nowhere to run!
+
+[0mSuddenly, a swarm of crabs
+(each in its own tiny submarine - it's too deep for them otherwise) zooms
+in to rescue you! They seem to be preparing to blast a hole in the ocean
+floor; sensors indicate a [1;32mmassive underground cave system[0m just beyond where
+they're aiming!
+
+[0mThe crab submarines all need to be aligned before they'll
+have enough power to blast a large enough hole for your submarine to get
+through. However, it doesn't look like they'll be aligned before the whale
+catches you! Maybe you can help?
+
+[0mThere's one major catch - crab submarines
+can only move horizontally.
+
+[0mYou quickly make a list of [1;32mthe horizontal position
+of each crab[0m (your puzzle input). Crab submarines have limited fuel, so
+you need to find a way to make all of their horizontal positions match
+while requiring them to spend as little fuel as possible.
+
+[0mFor example,
+consider the following horizontal positions:
+
+[0m[0m16,1,2,0,4,2,7,1,2,14[0m[0m
+[0mThis
+means there's a crab with horizontal position [0m16[0m, a crab with horizontal
+position [0m1[0m, and so on.
+
+[0mEach change of 1 step in horizontal position of
+a single crab costs 1 fuel. You could choose any horizontal position to
+align them all on, but the one that costs the least fuel is horizontal
+position [0m2[0m:
+
+[0m
+[0mMove from [0m16[0m to [0m2[0m: [0m14[0m fuel[0m
+[0mMove from [0m1[0m to [0m2[0m: [0m1[0m fuel[0m
+[0mMove from
+[0m2[0m to [0m2[0m: [0m0[0m fuel[0m
+[0mMove from [0m0[0m to [0m2[0m: [0m2[0m fuel[0m
+[0mMove from [0m4[0m to [0m2[0m: [0m2[0m fuel[0m
+[0mMove from
+[0m2[0m to [0m2[0m: [0m0[0m fuel[0m
+[0mMove from [0m7[0m to [0m2[0m: [0m5[0m fuel[0m
+[0mMove from [0m1[0m to [0m2[0m: [0m1[0m fuel[0m
+[0mMove from
+[0m2[0m to [0m2[0m: [0m0[0m fuel[0m
+[0mMove from [0m14[0m to [0m2[0m: [0m12[0m fuel[0m
+[0m
+[0mThis costs a total of [0m[1;32m37[0m[0m fuel.
+This is the cheapest possible outcome; more expensive outcomes include
+aligning at position [0m1[0m ([0m41[0m fuel), position [0m3[0m ([0m39[0m fuel), or position [0m10[0m
+([0m71[0m fuel).
+
+[0mDetermine the horizontal position that the crabs can align to
+using the least fuel possible. [1;32mHow much fuel must they spend to align to
+that position?[0m
+
+[0m
+[0mTo begin, [0mget your puzzle input[0m.
+

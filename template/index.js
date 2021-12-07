@@ -1,6 +1,6 @@
 const fs = require('fs')
 
-function inputDataLinesIntegers (filename = 'input.txt') {
+function inputDataLinesIntegers (filename = 'input-test.txt') {
   return fs.readFileSync(filename).toString().trim().split('\n').map((x) => parseInt(x))
 }
 
