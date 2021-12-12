@@ -1,0 +1,131 @@
+[1;31m--- Day 12: Passage Pathing ---
+[0mWith your [0msubmarine's subterranean subsystems subsisting suboptimally[0m,
+the only way you're getting out of this cave anytime soon is by finding
+a path yourself. Not just [1;32ma[0m path - the only way to know if you've found
+the [1;32mbest[0m path is to find [1;32mall[0m of them.
+
+[0mFortunately, the sensors are still
+mostly working, and so you build a rough map of the remaining caves (your
+puzzle input). For example:
+
+[0m[0mstart-A
+start-b
+A-c
+A-b
+b-d
+A-end
+b-end
+[0m[0m
+[0mThis
+is a list of how all of the caves are connected. You start in the cave
+named [0mstart[0m, and your destination is the cave named [0mend[0m. An entry like
+[0mb-d[0m means that cave [0mb[0m is connected to cave [0md[0m - that is, you can move between
+them.
+
+[0mSo, the above cave system looks roughly like this:
+
+[0m[0m    start
+   
+/   \
+c--A-----b--d
+    \   /
+     end
+[0m[0m
+[0mYour goal is to find the number
+of distinct [1;32mpaths[0m that start at [0mstart[0m, end at [0mend[0m, and don't visit small
+caves more than once. There are two types of caves: [1;32mbig[0m caves (written
+in uppercase, like [0mA[0m) and [1;32msmall[0m caves (written in lowercase, like [0mb[0m). It
+would be a waste of time to visit any small cave more than once, but big
+caves are large enough that it might be worth visiting them multiple times.
+So, all paths you find should [1;32mvisit small caves at most once[0m, and can [1;32mvisit
+big caves any number of times[0m.
+
+[0mGiven these rules, there are [0m[1;32m10[0m[0m paths through
+this example cave system:
+
+[0m[0mstart,A,b,A,c,A,end
+start,A,b,A,end
+start,A,b,end
+start,A,c,A,b,A,end
+start,A,c,A,b,end
+start,A,c,A,end
+start,A,end
+start,b,A,c,A,end
+start,b,A,end
+start,b,end
+[0m[0m
+[0m(Each
+line in the above list corresponds to a single path; the caves visited
+by that path are listed in the order they are visited and separated by
+commas.)
+
+[0mNote that in this cave system, cave [0md[0m is never visited by any
+path: to do so, cave [0mb[0m would need to be visited twice (once on the way
+to cave [0md[0m and a second time when returning from cave [0md[0m), and since cave
+[0mb[0m is small, this is not allowed.
+
+[0mHere is a slightly larger example:
+
+[0m[0mdc-end
+HN-start
+start-kj
+dc-start
+dc-HN
+LN-dc
+HN-end
+kj-sa
+kj-HN
+kj-dc
+[0m[0m
+[0mThe
+[0m19[0m paths through it are as follows:
+
+[0m[0mstart,HN,dc,HN,end
+start,HN,dc,HN,kj,HN,end
+start,HN,dc,end
+start,HN,dc,kj,HN,end
+start,HN,end
+start,HN,kj,HN,dc,HN,end
+start,HN,kj,HN,dc,end
+start,HN,kj,HN,end
+start,HN,kj,dc,HN,end
+start,HN,kj,dc,end
+start,dc,HN,end
+start,dc,HN,kj,HN,end
+start,dc,end
+start,dc,kj,HN,end
+start,kj,HN,dc,HN,end
+start,kj,HN,dc,end
+start,kj,HN,end
+start,kj,dc,HN,end
+start,kj,dc,end
+[0m[0m
+[0mFinally,
+this even larger example has [0m226[0m paths through it:
+
+[0m[0mfs-end
+he-DX
+fs-he
+start-DX
+pj-DX
+end-zg
+zg-sl
+zg-pj
+pj-he
+RW-he
+fs-DX
+pj-RW
+zg-RW
+start-pj
+he-WI
+zg-he
+pj-fs
+start-RW
+[0m[0m
+[0m[1;32mHow
+many paths through this cave system are there that visit small caves at
+most once?[0m
+
+[0m
+[0mTo begin, [0mget your puzzle input[0m.
+
