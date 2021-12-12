@@ -1,0 +1,100 @@
+[1;31m--- Day 10: Syntax Scoring ---
+[0mYou ask the submarine to determine the best route out of the deep-sea cave,
+but it only replies:
+
+[0m[0mSyntax error in navigation subsystem on line: [0mall
+of them[0m[0m[0m
+[0m[1;32mAll of them?![0m The damage is worse than you thought. You bring up
+a copy of the navigation subsystem (your puzzle input).
+
+[0mThe navigation
+subsystem syntax is made of several lines containing [1;32mchunks[0m. There are
+one or more chunks on each line, and chunks contain zero or more other
+chunks. Adjacent chunks are not separated by any delimiter; if one chunk
+stops, the next chunk (if any) can immediately start. Every chunk must
+[1;32mopen[0m and [1;32mclose[0m with one of four legal pairs of matching characters:
+
+[0m
+[0mIf
+a chunk opens with [0m([0m, it must close with [0m)[0m.[0m
+[0mIf a chunk opens with [0m[[0m, it
+must close with [0m][0m.[0m
+[0mIf a chunk opens with [0m{[0m, it must close with [0m}[0m.[0m
+[0mIf a
+chunk opens with [0m&lt;[0m, it must close with [0m&gt;[0m.[0m
+[0m
+[0mSo, [0m()[0m is a legal chunk
+that contains no other chunks, as is [0m[][0m. More complex but valid chunks
+include [0m([])[0m, [0m{()()()}[0m, [0m&lt;([{}])&gt;[0m, [0m[&lt;&gt;({}){}[([])&lt;&gt;]][0m,
+and even [0m(((((((((())))))))))[0m.
+
+[0mSome lines are [1;32mincomplete[0m, but others are
+[1;32mcorrupted[0m. Find and discard the corrupted lines first.
+
+[0mA corrupted line
+is one where a chunk [1;32mcloses with the wrong character[0m - that is, where the
+characters it opens and closes with do not form one of the four legal pairs
+listed above.
+
+[0mExamples of corrupted chunks include [0m(][0m, [0m{()()()&gt;[0m, [0m(((()))}[0m,
+and [0m&lt;([]){()}[{}])[0m. Such a chunk can appear anywhere within a line,
+and its presence causes the whole line to be considered corrupted.
+
+[0mFor
+example, consider the following navigation subsystem:
+
+[0m[0m[({(&lt;(())[]&gt;[[{[]{&lt;()&lt;&gt;&gt;
+[(()[&lt;&gt;])]({[&lt;{&lt;&lt;[]&gt;&gt;(
+{([(&lt;{}[&lt;&gt;[]}&gt;{[]{[(&lt;()&gt;
+(((({&lt;&gt;}&lt;{&lt;{&lt;&gt;}{[]{[]{}
+[[&lt;[([]))&lt;([[{}[[()]]]
+[{[{({}]{}}([{[{{{}}([]
+{&lt;[[]]&gt;}&lt;{[{[{[]{()[[[]
+[&lt;(&lt;(&lt;(&lt;{}))&gt;&lt;([]([]()
+&lt;{([([[(&lt;&gt;()){}]&gt;(&lt;&lt;{{
+&lt;{([{{}}[&lt;[[[&lt;&gt;{}]]]&gt;[]]
+[0m[0m
+[0mSome
+of the lines aren't corrupted, just incomplete; you can ignore these lines
+for now. The remaining five lines are corrupted:
+
+[0m
+[0m[0m{([(&lt;{}[&lt;&gt;[]}&gt;{[]{[(&lt;()&gt;[0m
+- Expected [0m][0m, but found [0m}[0m instead.[0m
+[0m[0m[[&lt;[([]))&lt;([[{}[[()]]][0m - Expected
+[0m][0m, but found [0m)[0m instead.[0m
+[0m[0m[{[{({}]{}}([{[{{{}}([][0m - Expected [0m)[0m, but found
+[0m][0m instead.[0m
+[0m[0m[&lt;(&lt;(&lt;(&lt;{}))&gt;&lt;([]([]()[0m - Expected [0m&gt;[0m, but
+found [0m)[0m instead.[0m
+[0m[0m&lt;{([([[(&lt;&gt;()){}]&gt;(&lt;&lt;{{[0m - Expected [0m][0m,
+but found [0m&gt;[0m instead.[0m
+[0m
+[0mStop at the first incorrect closing character
+on each corrupted line.
+
+[0mDid you know that syntax checkers actually have
+contests to see who can get the high score for syntax errors in a file?
+It's true! To calculate the syntax error score for a line, take the [1;32mfirst
+illegal character[0m on the line and look it up in the following table:
+
+[0m
+[0m[0m)[0m:
+[0m3[0m points.[0m
+[0m[0m][0m: [0m57[0m points.[0m
+[0m[0m}[0m: [0m1197[0m points.[0m
+[0m[0m&gt;[0m: [0m25137[0m points.[0m
+[0m
+[0mIn the above
+example, an illegal [0m)[0m was found twice ([0m2*3 = [1;32m6[0m[0m points), an illegal [0m][0m was
+found once ([0m[1;32m57[0m[0m points), an illegal [0m}[0m was found once ([0m[1;32m1197[0m[0m points), and
+an illegal [0m&gt;[0m was found once ([0m[1;32m25137[0m[0m points). So, the total syntax error
+score for this file is [0m6+57+1197+25137 = [1;32m26397[0m[0m points!
+
+[0mFind the first illegal
+character in each corrupted line of the navigation subsystem. [1;32mWhat is the
+total syntax error score for those errors?[0m
+
+[0m
+[0mTo begin, [0mget your puzzle input[0m.
+
