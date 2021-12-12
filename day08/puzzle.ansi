@@ -1,0 +1,140 @@
+[1;31m--- Day 8: Seven Segment Search ---
+[0mYou barely reach the safety of the cave when the whale smashes into the
+cave mouth, collapsing it. Sensors indicate another exit to this cave at
+a much greater depth, so you have no choice but to press on.
+
+[0mAs your submarine
+slowly makes its way through the cave system, you notice that the four-digit
+[0mseven-segment displays[0m in your submarine are malfunctioning; [0mthey must
+have been damaged[0m during the escape. You'll be in a lot of trouble without
+them, so you'd better figure out what's wrong.
+
+[0mEach digit of a seven-segment
+display is rendered by turning on or off any of seven segments named [0ma[0m
+through [0mg[0m:
+
+[0m[0m  0:      1:      2:      3:      4:
+ [1;32maaaa[0m    ....    [1;32maaaa 
+  aaaa[0m    ....
+[1;32mb    c[0m  .    [1;32mc[0m  .    [1;32mc[0m  .    [1;32mc  b    c[0m
+[1;32mb    c[0m  .    [1;32mc[0m  .
+   [1;32mc[0m  .    [1;32mc  b    c[0m
+ ....    ....    [1;32mdddd    dddd    dddd[0m
+[1;32me    f[0m  .  
+ [1;32mf  e[0m    .  .    [1;32mf[0m  .    [1;32mf[0m
+[1;32me    f[0m  .    [1;32mf  e[0m    .  .    [1;32mf[0m  .    [1;32mf[0m
+ [1;32mgggg[0m
+   ....    [1;32mgggg    gggg[0m    ....
+
+  5:      6:      7:      8:      9:
+
+[1;32maaaa    aaaa    aaaa    aaaa    aaaa[0m
+[1;32mb[0m    .  [1;32mb[0m    .  .    [1;32mc  b    c  b
+   c[0m
+[1;32mb[0m    .  [1;32mb[0m    .  .    [1;32mc  b    c  b    c[0m
+ [1;32mdddd    dddd[0m    ....    [1;32mdddd
+   dddd[0m
+.    [1;32mf  e    f[0m  .    [1;32mf  e    f[0m  .    [1;32mf[0m
+.    [1;32mf  e    f[0m  .    [1;32mf 
+e    f[0m  .    [1;32mf[0m
+ [1;32mgggg    gggg[0m    ....    [1;32mgggg    gggg[0m
+[0m[0m
+[0mSo, to render a [0m1[0m,
+only segments [0mc[0m and [0mf[0m would be turned on; the rest would be off. To render
+a [0m7[0m, only segments [0ma[0m, [0mc[0m, and [0mf[0m would be turned on.
+
+[0mThe problem is that
+the signals which control the segments have been mixed up on each display.
+The submarine is still trying to display numbers by producing output on
+signal wires [0ma[0m through [0mg[0m, but those wires are connected to segments [1;32mrandomly[0m.
+Worse, the wire/segment connections are mixed up separately for each four-digit
+display! (All of the digits [1;32mwithin[0m a display use the same connections,
+though.)
+
+[0mSo, you might know that only signal wires [0mb[0m and [0mg[0m are turned on,
+but that doesn't mean [1;32msegments[0m [0mb[0m and [0mg[0m are turned on: the only digit that
+uses two segments is [0m1[0m, so it must mean segments [0mc[0m and [0mf[0m are meant to be
+on. With just that information, you still can't tell which wire ([0mb[0m/[0mg[0m) goes
+to which segment ([0mc[0m/[0mf[0m). For that, you'll need to collect more information.
+
+[0mFor
+each display, you watch the changing signals for a while, make a note of
+[1;32mall ten unique signal patterns[0m you see, and then write down a single [1;32mfour
+digit output value[0m (your puzzle input). Using the signal patterns, you
+should be able to work out which pattern corresponds to which digit.
+
+[0mFor
+example, here is what you might see in a single entry in your notes:
+
+[0m[0macedgfb
+cdfbe gcdfa fbcad dab cefabd cdfgeb eafb cagedb ab |
+cdfeb fcadb cdfeb
+cdbaf[0m[0m
+[0m(The entry is wrapped here to two lines so it fits; in your notes,
+it will all be on a single line.)
+
+[0mEach entry consists of ten [1;32munique signal
+patterns[0m, a [0m|[0m delimiter, and finally the [1;32mfour digit output value[0m. Within
+an entry, the same wire/segment connections are used (but you don't know
+what the connections actually are). The unique signal patterns correspond
+to the ten different ways the submarine tries to render a digit using the
+current wire/segment connections. Because [0m7[0m is the only digit that uses
+three segments, [0mdab[0m in the above example means that to render a [0m7[0m, signal
+lines [0md[0m, [0ma[0m, and [0mb[0m are on. Because [0m4[0m is the only digit that uses four segments,
+[0meafb[0m means that to render a [0m4[0m, signal lines [0me[0m, [0ma[0m, [0mf[0m, and [0mb[0m are on.
+
+[0mUsing
+this information, you should be able to work out which combination of signal
+wires corresponds to each of the ten digits. Then, you can decode the four
+digit output value. Unfortunately, in the above example, all of the digits
+in the output value ([0mcdfeb fcadb cdfeb cdbaf[0m) use five segments and are
+more difficult to deduce.
+
+[0mFor now, [1;32mfocus on the easy digits[0m. Consider this
+larger example:
+
+[0m[0mbe cfbegad cbdgef fgaecd cgeb fdcge agebfd fecdb fabcd
+edb |
+[1;32mfdgacbe[0m cefdb cefbgd [1;32mgcbe[0m
+edbfga begcd cbg gc gcadebf fbgde acbgfd
+abcde gfcbed gfec |
+fcgedb [1;32mcgb[0m [1;32mdgebacf[0m [1;32mgc[0m
+fgaebd cg bdaec gdafb agbcfd
+gdcbef bgcad gfac gcb cdgabef |
+[1;32mcg[0m [1;32mcg[0m fdcagb [1;32mcbg[0m
+fbegcd cbd adcefb dageb
+afcb bc aefdc ecdab fgdeca fcdbega |
+efabcd cedba gadfec [1;32mcb[0m
+aecbfdg fbg
+gf bafeg dbefa fcge gcbea fcaegb dgceab fcbdga |
+[1;32mgecf[0m [1;32megdcabf[0m [1;32mbgf[0m bfgea
+fgeab
+ca afcebg bdacfeg cfaedg gcfdb baec bfadeg bafgc acf |
+[1;32mgebdcfa[0m [1;32mecba[0m [1;32mca[0m
+[1;32mfadegcb[0m
+dbcfg fgd bdegcaf fgec aegbdf ecdfab fbedc dacgb gdcebf gf |
+[1;32mcefg[0m
+dcbef [1;32mfcge[0m [1;32mgbcadfe[0m
+bdfegc cbegaf gecbf dfcage bdacg ed bedf ced adcbefg
+gebcd |
+[1;32med[0m bcgafe cdgba cbgef
+egadfb cdbfeg cegd fecab cgb gbdefca cg fgcdab
+egfdb bfceg |
+[1;32mgbdfcae[0m [1;32mbgc[0m [1;32mcg[0m [1;32mcgb[0m
+gcafb gcf dcaebfg ecagb gf abcdeg gaef
+cafbge fdbac fegbdc |
+[1;32mfgae[0m cfgab [1;32mfg[0m bagce
+[0m[0m
+[0mBecause the digits [0m1[0m, [0m4[0m, [0m7[0m,
+and [0m8[0m each use a unique number of segments, you should be able to tell
+which combinations of signals correspond to those digits. Counting [1;32monly
+digits in the output values[0m (the part after [0m|[0m on each line), in the above
+example, there are [0m[1;32m26[0m[0m instances of digits that use a unique number of segments
+(highlighted above).
+
+[0m[1;32mIn the output values, how many times do digits [0m1[0m,
+[0m4[0m, [0m7[0m, or [0m8[0m appear?[0m
+
+[0m
+[0mTo begin, [0mget your puzzle input[0m.
+
