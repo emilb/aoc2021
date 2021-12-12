@@ -1,0 +1,47 @@
+[1;31m--- Day 9: Smoke Basin ---
+[0mThese caves seem to be [0mlava tubes[0m. Parts are even still volcanically active;
+small hydrothermal vents release smoke into the caves that slowly [0msettles
+like rain[0m.
+
+[0mIf you can model how the smoke flows through the caves, you
+might be able to avoid it and be that much safer. The submarine generates
+a heightmap of the floor of the nearby caves for you (your puzzle input).
+
+[0mSmoke
+flows to the lowest point of the area it's in. For example, consider the
+following heightmap:
+
+[0m[0m2[1;32m1[0m9994321[1;32m0[0m
+3987894921
+98[1;32m5[0m6789892
+8767896789
+989996[1;32m5[0m678
+[0m[0m
+[0mEach
+number corresponds to the height of a particular location, where [0m9[0m is the
+highest and [0m0[0m is the lowest a location can be.
+
+[0mYour first goal is to find
+the [1;32mlow points[0m - the locations that are lower than any of its adjacent
+locations. Most locations have four adjacent locations (up, down, left,
+and right); locations on the edge or corner of the map have three or two
+adjacent locations, respectively. (Diagonal locations do not count as adjacent.)
+
+[0mIn
+the above example, there are [1;32mfour[0m low points, all highlighted: two are
+in the first row (a [0m1[0m and a [0m0[0m), one is in the third row (a [0m5[0m), and one
+is in the bottom row (also a [0m5[0m). All other locations on the heightmap have
+some lower adjacent location, and so are not low points.
+
+[0mThe [1;32mrisk level[0m
+of a low point is [1;32m1 plus its height[0m. In the above example, the risk levels
+of the low points are [0m2[0m, [0m1[0m, [0m6[0m, and [0m6[0m. The sum of the risk levels of all
+low points in the heightmap is therefore [0m[1;32m15[0m[0m.
+
+[0mFind all of the low points
+on your heightmap. [1;32mWhat is the sum of the risk levels of all low points
+on your heightmap?[0m
+
+[0m
+[0mTo begin, [0mget your puzzle input[0m.
+
