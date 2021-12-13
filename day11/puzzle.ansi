@@ -1,0 +1,355 @@
+[1;31m--- Day 11: Dumbo Octopus ---
+[0mYou enter a large cavern full of rare bioluminescent [0mdumbo octopuses[0m! They
+seem to not like the Christmas lights on your submarine, so you turn them
+off for now.
+
+[0mThere are 100 [0moctopuses[0m arranged neatly in a 10 by 10 grid.
+Each octopus slowly gains [1;32menergy[0m over time and [1;32mflashes[0m brightly for a moment
+when its energy is full. Although your lights are off, maybe you could
+navigate through the cave without disturbing the octopuses if you could
+predict when the flashes of light will happen.
+
+[0mEach octopus has an [1;32menergy
+level[0m - your submarine can remotely measure the energy level of each octopus
+(your puzzle input). For example:
+
+[0m[0m5483143223
+2745854711
+5264556173
+6141336146
+6357385478
+4167524645
+2176841721
+6882881134
+4846848554
+5283751526
+[0m[0m
+[0mThe
+energy level of each octopus is a value between [0m0[0m and [0m9[0m. Here, the top-left
+octopus has an energy level of [0m5[0m, the bottom-right one has an energy level
+of [0m6[0m, and so on.
+
+[0mYou can model the energy levels and flashes of light in
+[1;32msteps[0m. During a single step, the following occurs:
+
+[0m
+[0mFirst, the energy level
+of each octopus increases by [0m1[0m.[0m
+[0mThen, any octopus with an energy level
+greater than [0m9[0m [1;32mflashes[0m. This increases the energy level of all adjacent
+octopuses by [0m1[0m, including octopuses that are diagonally adjacent. If this
+causes an octopus to have an energy level greater than [0m9[0m, it [1;32malso flashes[0m.
+This process continues as long as new octopuses keep having their energy
+level increased beyond [0m9[0m. (An octopus can only flash [1;32mat most once per step[0m.)[0m
+[0mFinally,
+any octopus that flashed during this step has its energy level set to [0m0[0m,
+as it used all of its energy to flash.[0m
+[0m
+[0mAdjacent flashes can cause an octopus
+to flash on a step even if it begins that step with very little energy.
+Consider the middle octopus with [0m1[0m energy in this situation:
+
+[0m[0mBefore any
+steps:
+11111
+19991
+19191
+19991
+11111
+
+After step 1:
+34543
+4[1;32m000[0m4
+5[1;32m000[0m5
+4[1;32m000[0m4
+34543
+
+After
+step 2:
+45654
+51115
+61116
+51115
+45654
+[0m[0m
+[0mAn octopus is [1;32mhighlighted[0m when it
+flashed during the given step.
+
+[0mHere is how the larger example above progresses:
+
+[0m[0mBefore
+any steps:
+5483143223
+2745854711
+5264556173
+6141336146
+6357385478
+4167524645
+2176841721
+6882881134
+4846848554
+5283751526
+
+After
+step 1:
+6594254334
+3856965822
+6375667284
+7252447257
+7468496589
+5278635756
+3287952832
+7993992245
+5957959665
+6394862637
+
+After
+step 2:
+88[1;32m0[0m7476555
+5[1;32m0[0m89[1;32m0[0m87[1;32m0[0m54
+85978896[1;32m0[0m8
+84857696[1;32m00[0m
+87[1;32m00[0m9[1;32m0[0m88[1;32m00[0m
+66[1;32m000[0m88989
+68[1;32m0000[0m5943
+[1;32m000000[0m7456
+9[1;32m000000[0m876
+87[1;32m0000[0m6848
+
+After
+step 3:
+[1;32m00[0m5[1;32m0[0m9[1;32m00[0m866
+85[1;32m00[0m8[1;32m00[0m575
+99[1;32m000000[0m39
+97[1;32m000000[0m41
+9935[1;32m0[0m8[1;32m00[0m63
+77123[1;32m00000[0m
+791125[1;32m000[0m9
+221113[1;32m0000[0m
+[1;32m0[0m421125[1;32m000[0m
+[1;32m00[0m21119[1;32m000[0m
+
+After
+step 4:
+2263[1;32m0[0m31977
+[1;32m0[0m923[1;32m0[0m31697
+[1;32m00[0m3222115[1;32m0[0m
+[1;32m00[0m41111163
+[1;32m00[0m76191174
+[1;32m00[0m53411122
+[1;32m00[0m4236112[1;32m0[0m
+5532241122
+1532247211
+113223[1;32m0[0m211
+
+After
+step 5:
+4484144[1;32m000[0m
+2[1;32m0[0m44144[1;32m000[0m
+2253333493
+1152333274
+11873[1;32m0[0m3285
+1164633233
+1153472231
+6643352233
+2643358322
+2243341322
+
+After
+step 6:
+5595255111
+3155255222
+33644446[1;32m0[0m5
+2263444496
+2298414396
+2275744344
+2264583342
+7754463344
+3754469433
+3354452433
+
+After
+step 7:
+67[1;32m0[0m7366222
+4377366333
+4475555827
+34966557[1;32m0[0m9
+35[1;32m00[0m6256[1;32m0[0m9
+35[1;32m0[0m9955566
+3486694453
+8865585555
+486558[1;32m0[0m644
+4465574644
+
+After
+step 8:
+7818477333
+5488477444
+5697666949
+46[1;32m0[0m876683[1;32m0[0m
+473494673[1;32m0[0m
+474[1;32m00[0m97688
+69[1;32m0000[0m7564
+[1;32m000000[0m9666
+8[1;32m00000[0m4755
+68[1;32m0000[0m7755
+
+After
+step 9:
+9[1;32m0[0m6[1;32m0000[0m644
+78[1;32m00000[0m976
+69[1;32m000000[0m8[1;32m0[0m
+584[1;32m00000[0m82
+5858[1;32m0000[0m93
+69624[1;32m00000[0m
+8[1;32m0[0m2125[1;32m000[0m9
+222113[1;32m000[0m9
+9111128[1;32m0[0m97
+7911119976
+
+After
+step 10:
+[1;32m0[0m481112976
+[1;32m00[0m31112[1;32m00[0m9
+[1;32m00[0m411125[1;32m0[0m4
+[1;32m00[0m811114[1;32m0[0m6
+[1;32m00[0m991113[1;32m0[0m6
+[1;32m00[0m93511233
+[1;32m0[0m44236113[1;32m0[0m
+553225235[1;32m0[0m
+[1;32m0[0m53225[1;32m0[0m6[1;32m00[0m
+[1;32m00[0m3224[1;32m0000[0m
+[0m[0m
+
+[0mAfter
+step 10, there have been a total of [0m204[0m flashes. Fast forwarding, here
+is the same configuration every 10 steps:
+
+
+[0m[0mAfter step 20:
+3936556452
+56865568[1;32m0[0m6
+449655569[1;32m0[0m
+444865558[1;32m0[0m
+445686557[1;32m0[0m
+568[1;32m00[0m86577
+7[1;32m00000[0m9896
+[1;32m0000000[0m344
+6[1;32m000000[0m364
+46[1;32m0000[0m9543
+
+After
+step 30:
+[1;32m0[0m643334118
+4253334611
+3374333458
+2225333337
+2229333338
+2276733333
+2754574565
+5544458511
+9444447111
+7944446119
+
+After
+step 40:
+6211111981
+[1;32m0[0m421111119
+[1;32m00[0m42111115
+[1;32m000[0m3111115
+[1;32m000[0m3111116
+[1;32m00[0m65611111
+[1;32m0[0m532351111
+3322234597
+2222222976
+2222222762
+
+After
+step 50:
+9655556447
+48655568[1;32m0[0m5
+448655569[1;32m0[0m
+445865558[1;32m0[0m
+457486557[1;32m0[0m
+57[1;32m000[0m86566
+6[1;32m00000[0m9887
+8[1;32m000000[0m533
+68[1;32m00000[0m633
+568[1;32m0000[0m538
+
+After
+step 60:
+25333342[1;32m00[0m
+274333464[1;32m0[0m
+2264333458
+2225333337
+2225333338
+2287833333
+3854573455
+1854458611
+1175447111
+1115446111
+
+After
+step 70:
+8211111164
+[1;32m0[0m421111166
+[1;32m00[0m42111114
+[1;32m000[0m4211115
+[1;32m0000[0m211116
+[1;32m00[0m65611111
+[1;32m0[0m532351111
+7322235117
+5722223475
+4572222754
+
+After
+step 80:
+1755555697
+59655556[1;32m0[0m9
+448655568[1;32m0[0m
+445865558[1;32m0[0m
+457[1;32m0[0m86557[1;32m0[0m
+57[1;32m000[0m86566
+7[1;32m00000[0m8666
+[1;32m0000000[0m99[1;32m0[0m
+[1;32m0000000[0m8[1;32m00[0m
+[1;32m0000000000[0m
+
+After
+step 90:
+7433333522
+2643333522
+2264333458
+2226433337
+2222433338
+2287833333
+2854573333
+4854458333
+3387779333
+3333333333
+
+After
+step 100:
+[1;32m0[0m397666866
+[1;32m0[0m749766918
+[1;32m00[0m53976933
+[1;32m000[0m4297822
+[1;32m000[0m4229892
+[1;32m00[0m53222877
+[1;32m0[0m532222966
+9322228966
+7922286866
+6789998766
+[0m[0m
+[0mAfter
+100 steps, there have been a total of [0m[1;32m1656[0m[0m flashes.
+
+[0mGiven the starting
+energy levels of the dumbo octopuses in your cavern, simulate 100 steps.
+[1;32mHow many total flashes are there after 100 steps?[0m
+
+[0m
+[0mTo begin, [0mget your puzzle
+input[0m.
+
