@@ -1,0 +1,152 @@
+[1;31m--- Day 13: Transparent Origami ---
+[0mYou reach another volcanically active part of the cave. It would be nice
+if you could do some kind of thermal imaging so you could tell ahead of
+time which caves are too hot to safely enter.
+
+[0mFortunately, the submarine
+seems to be equipped with a thermal camera! When you activate it, you are
+greeted with:
+
+[0m[0mCongratulations on your purchase! To activate this infrared
+thermal imaging
+camera system, please enter the code found on page 1 of
+the manual.
+[0m[0m
+[0mApparently, the Elves have never used this feature. To your
+surprise, you manage to find the manual; as you go to open it, page 1 falls
+out. It's a large sheet of [0mtransparent paper[0m! The transparent paper is
+marked with random dots and includes instructions on how to fold it up
+(your puzzle input). For example:
+
+[0m[0m6,10
+0,14
+9,10
+0,3
+10,4
+4,11
+6,0
+6,12
+4,1
+0,13
+10,12
+3,4
+3,0
+8,4
+1,10
+2,14
+8,10
+9,0
+
+fold
+along y=7
+fold along x=5
+[0m[0m
+[0mThe first section is a list of dots on the transparent
+paper. [0m0,0[0m represents the top-left coordinate.  The first value, [0mx[0m, increases
+to the right.  The second value, [0my[0m, increases downward.  So, the coordinate
+[0m3,0[0m is to the right of [0m0,0[0m, and the coordinate [0m0,7[0m is below [0m0,0[0m. The coordinates
+in this example form the following pattern, where [0m#[0m is a dot on the paper
+and [0m.[0m is an empty, unmarked position:
+
+[0m[0m...#..#..#.
+....#......
+...........
+#..........
+...#....#.#
+...........
+...........
+...........
+...........
+...........
+.#....#.##.
+....#......
+......#...#
+#..........
+#.#........
+[0m[0m
+[0mThen,
+there is a list of [1;32mfold instructions[0m. Each instruction indicates a line
+on the transparent paper and wants you to fold the paper [1;32mup[0m (for horizontal
+[0my=...[0m lines) or [1;32mleft[0m (for vertical [0mx=...[0m lines). In this example, the first
+fold instruction is [0mfold along y=7[0m, which designates the line formed by
+all of the positions where [0my[0m is [0m7[0m (marked here with [0m-[0m):
+
+[0m[0m...#..#..#.
+....#......
+...........
+#..........
+...#....#.#
+...........
+...........
+-----------
+...........
+...........
+.#....#.##.
+....#......
+......#...#
+#..........
+#.#........
+[0m[0m
+[0mBecause
+this is a horizontal line, fold the bottom half [1;32mup[0m. Some of the dots might
+end up overlapping after the fold is complete, but dots will never appear
+exactly on a fold line. The result of doing this fold looks like this:
+
+[0m[0m#.##..#..#.
+#...#......
+......#...#
+#...#......
+.#.#..#.###
+...........
+...........
+[0m[0m
+[0mNow,
+only [0m17[0m dots are visible.
+
+[0mNotice, for example, the two dots in the bottom
+left corner before the transparent paper is folded; after the fold is complete,
+those dots appear in the top left corner (at [0m0,0[0m and [0m0,1[0m). Because the
+paper is transparent, the dot just below them in the result (at [0m0,3[0m) remains
+visible, as it can be seen through the transparent paper.
+
+[0mAlso notice that
+some dots can end up [1;32moverlapping[0m; in this case, the dots merge together
+and become a single dot.
+
+[0mThe second fold instruction is [0mfold along x=5[0m,
+which indicates this line:
+
+[0m[0m#.##.|#..#.
+#...#|.....
+.....|#...#
+#...#|.....
+.#.#.|#.###
+.....|.....
+.....|.....
+[0m[0m
+[0mBecause
+this is a vertical line, fold [1;32mleft[0m:
+
+[0m[0m#####
+#...#
+#...#
+#...#
+#####
+.....
+.....
+[0m[0m
+[0mThe
+instructions made a square!
+
+[0mThe transparent paper is pretty big, so for
+now, focus on just completing the first fold. After the first fold in the
+example above, [0m[1;32m17[0m[0m dots are visible - dots that end up overlapping after
+the fold is completed count as a single dot.
+
+[0m[1;32mHow many dots are visible
+after completing just the first fold instruction on your transparent paper?[0m
+
+[0m
+[0mTo
+begin, [0mget your puzzle input[0m.
+
