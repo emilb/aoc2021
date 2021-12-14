@@ -1,0 +1,91 @@
+[1;31m--- Day 14: Extended Polymerization ---
+[0mThe incredible pressures at this depth are starting to put a strain on
+your submarine. The submarine has [0mpolymerization[0m equipment that would produce
+suitable materials to reinforce the submarine, and the nearby volcanically-active
+caves should even have the necessary input elements in sufficient quantities.
+
+[0mThe
+submarine manual contains [0minstructions[0m for finding the optimal polymer
+formula; specifically, it offers a [1;32mpolymer template[0m and a list of [1;32mpair
+insertion[0m rules (your puzzle input). You just need to work out what polymer
+would result after repeating the pair insertion process a few times.
+
+[0mFor
+example:
+
+[0m[0mNNCB
+
+CH -&gt; B
+HH -&gt; N
+CB -&gt; H
+NH -&gt; C
+HB -&gt; C
+HC
+-&gt; B
+HN -&gt; C
+NN -&gt; C
+BH -&gt; H
+NC -&gt; B
+NB -&gt; B
+BN -&gt;
+B
+BB -&gt; N
+BC -&gt; B
+CC -&gt; N
+CN -&gt; C
+[0m[0m
+[0mThe first line is the [1;32mpolymer
+template[0m - this is the starting point of the process.
+
+[0mThe following section
+defines the [1;32mpair insertion[0m rules. A rule like [0mAB -&gt; C[0m means that when
+elements [0mA[0m and [0mB[0m are immediately adjacent, element [0mC[0m should be inserted
+between them. These insertions all happen simultaneously.
+
+[0mSo, starting
+with the polymer template [0mNNCB[0m, the first step simultaneously considers
+all three pairs:
+
+[0m
+[0mThe first pair ([0mNN[0m) matches the rule [0mNN -&gt; C[0m, so element
+[0m[1;32mC[0m[0m is inserted between the first [0mN[0m and the second [0mN[0m.[0m
+[0mThe second pair ([0mNC[0m)
+matches the rule [0mNC -&gt; B[0m, so element [0m[1;32mB[0m[0m is inserted between the [0mN[0m and
+the [0mC[0m.[0m
+[0mThe third pair ([0mCB[0m) matches the rule [0mCB -&gt; H[0m, so element [0m[1;32mH[0m[0m is
+inserted between the [0mC[0m and the [0mB[0m.[0m
+[0m
+[0mNote that these pairs overlap: the second
+element of one pair is the first element of the next pair. Also, because
+all pairs are considered simultaneously, inserted elements are not considered
+to be part of a pair until the next step.
+
+[0mAfter the first step of this
+process, the polymer becomes [0mN[1;32mC[0mN[1;32mB[0mC[1;32mH[0mB[0m.
+
+[0mHere are the results of a few steps
+using the above rules:
+
+[0m[0mTemplate:     NNCB
+After step 1: NCNBCHB
+After step
+2: NBCCNBBBCBHCB
+After step 3: NBBBCNCCNBBNBNBBCHBHHBCHB
+After step 4:
+NBBNBNBBCCNBCNCCNBBNBBNBBBNBBNBBCBHCBHHNHCBBCBHCB
+[0m[0m
+[0mThis polymer grows quickly.
+After step 5, it has length 97; After step 10, it has length 3073. After
+step 10, [0mB[0m occurs 1749 times, [0mC[0m occurs 298 times, [0mH[0m occurs 161 times, and
+[0mN[0m occurs 865 times; taking the quantity of the most common element ([0mB[0m,
+1749) and subtracting the quantity of the least common element ([0mH[0m, 161)
+produces [0m1749 - 161 = [1;32m1588[0m[0m.
+
+[0mApply 10 steps of pair insertion to the polymer
+template and find the most and least common elements in the result. [1;32mWhat
+do you get if you take the quantity of the most common element and subtract
+the quantity of the least common element?[0m
+
+[0m
+[0mTo begin, [0mget your puzzle input[0m.
+
