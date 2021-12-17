@@ -1,0 +1,154 @@
+[1;31m--- Day 17: Trick Shot ---
+[0mYou finally decode the Elves' message. [0m[0mHI[0m[0m, the message says. You continue
+searching for the sleigh keys.
+
+[0mAhead of you is what appears to be a large
+[0mocean trench[0m. Could the keys have fallen into it? You'd better send a probe
+to investigate.
+
+[0mThe probe launcher on your submarine can fire the probe
+with any [0minteger[0m velocity in the [0mx[0m (forward) and [0my[0m (upward, or downward
+if negative) directions. For example, an initial [0mx,y[0m velocity like [0m0,10[0m
+would fire the probe straight up, while an initial velocity like [0m10,-1[0m
+would fire the probe forward at a slight downward angle.
+
+[0mThe probe's [0mx,y[0m
+position starts at [0m0,0[0m. Then, it will follow some trajectory by moving
+in [1;32msteps[0m. On each step, these changes occur in the following order:
+
+[0m
+[0mThe
+probe's [0mx[0m position increases by its [0mx[0m velocity.[0m
+[0mThe probe's [0my[0m position
+increases by its [0my[0m velocity.[0m
+[0mDue to drag, the probe's [0mx[0m velocity changes
+by [0m1[0m toward the value [0m0[0m; that is, it decreases by [0m1[0m if it is greater than
+[0m0[0m, increases by [0m1[0m if it is less than [0m0[0m, or does not change if it is already
+[0m0[0m.[0m
+[0mDue to gravity, the probe's [0my[0m velocity decreases by [0m1[0m.[0m
+[0m
+[0mFor the probe
+to successfully make it into the trench, the probe must be on some trajectory
+that causes it to be within a [1;32mtarget area[0m after any step. The submarine
+computer has already calculated this target area (your puzzle input). For
+example:
+
+[0m[0mtarget area: x=20..30, y=-10..-5[0m[0m
+[0mThis target area means that you
+need to find initial [0mx,y[0m velocity values such that after any step, the
+probe's [0mx[0m position is at least [0m20[0m and at most [0m30[0m, [1;32mand[0m the probe's [0my[0m position
+is at least [0m-10[0m and at most [0m-5[0m.
+
+[0mGiven this target area, one initial velocity
+that causes the probe to be within the target area after any step is [0m7,2[0m:
+
+[0m[0m.............#....#............
+.......#..............#........
+...............................
+S........................#.....
+...............................
+...............................
+...........................#...
+...............................
+....................TTTTTTTTTTT
+....................TTTTTTTTTTT
+....................TTTTTTTT#TT
+....................TTTTTTTTTTT
+....................TTTTTTTTTTT
+....................TTTTTTTTTTT
+[0m[0m
+[0mIn
+this diagram, [0mS[0m is the probe's initial position, [0m0,0[0m. The [0mx[0m coordinate
+increases to the right, and the [0my[0m coordinate increases upward. In the bottom
+right, positions that are within the target area are shown as [0mT[0m. After
+each step (until the target area is reached), the position of the probe
+is marked with [0m#[0m. (The bottom-right [0m#[0m is both a position the probe reaches
+and a position in the target area.)
+
+[0mAnother initial velocity that causes
+the probe to be within the target area after any step is [0m6,3[0m:
+
+[0m[0m...............#..#............
+...........#........#..........
+...............................
+......#..............#.........
+...............................
+...............................
+S....................#.........
+...............................
+...............................
+...............................
+.....................#.........
+....................TTTTTTTTTTT
+....................TTTTTTTTTTT
+....................TTTTTTTTTTT
+....................TTTTTTTTTTT
+....................T#TTTTTTTTT
+....................TTTTTTTTTTT
+[0m[0m
+[0mAnother
+one is [0m9,0[0m:
+
+[0m[0mS........#.....................
+.................#.............
+...............................
+........................#......
+...............................
+....................TTTTTTTTTTT
+....................TTTTTTTTTT#
+....................TTTTTTTTTTT
+....................TTTTTTTTTTT
+....................TTTTTTTTTTT
+....................TTTTTTTTTTT
+[0m[0m
+[0mOne
+initial velocity that [1;32mdoesn't[0m cause the probe to be within the target area
+after any step is [0m17,-4[0m:
+
+[0m[0mS..............................................................
+...............................................................
+...............................................................
+...............................................................
+.................#.............................................
+....................TTTTTTTTTTT................................
+....................TTTTTTTTTTT................................
+....................TTTTTTTTTTT................................
+....................TTTTTTTTTTT................................
+....................TTTTTTTTTTT..#.............................
+....................TTTTTTTTTTT................................
+...............................................................
+...............................................................
+...............................................................
+...............................................................
+................................................#..............
+...............................................................
+...............................................................
+...............................................................
+...............................................................
+...............................................................
+...............................................................
+..............................................................#
+[0m[0m
+[0mThe
+probe appears to pass through the target area, but is never within it after
+any step. Instead, it continues down and to the right - only the first
+few steps are shown.
+
+[0mIf you're going to fire a highly scientific probe
+out of a super cool probe launcher, you might as well do it with [1;32mstyle[0m.
+How high can you make the probe go while still reaching the target area?
+
+[0mIn
+the above example, using an initial velocity of [0m6,9[0m is the best you can
+do, causing the probe to reach a maximum [0my[0m position of [0m[1;32m45[0m[0m. (Any higher
+initial [0my[0m velocity causes the probe to overshoot the target area entirely.)
+
+[0mFind
+the initial velocity that causes the probe to reach the highest [0my[0m position
+and still eventually be within the target area after any step. [1;32mWhat is
+the highest [0my[0m position it reaches on this trajectory?[0m
+
+[0m
+[0mTo begin, [0mget your
+puzzle input[0m.
+
